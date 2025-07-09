@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7dc04b48.css",
+    "main.js": "/static/js/main.35f061ff.js",
+    "static/media/meatballs3.png": "/static/media/meatballs3.474ae8e45a0fbeb2788a.png",
+    "static/media/food.png": "/static/media/food.a18f0a73e1050cb04e1e.png",
+    "static/media/lamb3.png": "/static/media/lamb3.dfd4c6da681f9b0401fb.png",
+    "static/media/bowl.jpg": "/static/media/bowl.a982bd94cf54ffb27519.jpg",
+    "static/media/spinich.jpg": "/static/media/spinich.efec21b120e55bbff2cd.jpg",
+    "static/media/tacos.jpg": "/static/media/tacos.94c16e28d6b24c518b60.jpg",
+    "static/media/lamb2.0.webp": "/static/media/lamb2.0.3b1f7fee2835ce9f9fd3.webp",
+    "static/media/book.png": "/static/media/book.568126708af36a42f300.png",
+    "static/media/chef.png": "/static/media/chef.be1688851d3cd345c77f.png",
+    "static/media/location.png": "/static/media/location.1eee268d0392888499ac.png",
+    "index.html": "/index.html",
+    "main.7dc04b48.css.map": "/static/css/main.7dc04b48.css.map",
+    "main.35f061ff.js.map": "/static/js/main.35f061ff.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7dc04b48.css",
+    "static/js/main.35f061ff.js"
+  ]
+}
