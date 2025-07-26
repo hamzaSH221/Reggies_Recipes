@@ -5,8 +5,6 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import ViewRecipes from './pages/View';
-import Login from './pages/Login';
-import LoggedIn from './pages/loggedIn';
 import CreateDish from './pages/createDish';
 
 function App() {
@@ -20,8 +18,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/view-recipes" element={<ViewRecipes />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/loggedIn" element={<LoggedIn />} />
           <Route path="/createDish" element={<CreateDish />} />
         </Routes>
       </main>

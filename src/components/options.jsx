@@ -1,8 +1,9 @@
 import React from "react";
 import Book from "../images/book.png";
 import Chef from "../images/chef.png";
+import Bot from "../images/bot.png";
 
-function Options() {
+export default function Options() {
   return (
     <div className="bg-pink-50 text-gray-800">
       {/* Recipes Section */}
@@ -58,8 +59,33 @@ function Options() {
           </div>
         </div>
       </section>
+
+      {/* Create Dish Section */}
+      <section className="container mx-auto px-6 py-16 mt-10">
+        <div className="flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-8">
+          <div className="flex-1">
+            <img
+              src={Bot}
+              alt="Create Dish Icon"
+              className="w-full max-w-sm mx-auto h-auto rounded-xl shadow-lg"
+            />
+          </div>
+          <div className="flex-1">
+            <h2 className="text-3xl font-bold text-pink-600 mb-4">
+              Create Your Own Dish
+            </h2>
+            <p className="mb-6 text-lg">
+              Fancy a unique culinary adventure? Let our AI guide you to craft a personalized recipe based on your preferences.
+            </p>
+            <a
+              href="/createdish"
+              className="inline-block px-8 py-3 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-full transition-shadow shadow-md"
+            >
+              Create Dish
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
-
-export default Options;

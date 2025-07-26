@@ -1,33 +1,17 @@
-// src/components/Nav.jsx
 import React, { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  // Determine login state on loggedIn or createDish pages
-  const isLoggedIn = ['/loggedIn', '/createDish'].includes(location.pathname);
 
   const toggleMenu = () => setIsOpen(prev => !prev);
 
-  const handleLogout = () => {
-    setIsOpen(false);
-    navigate('/');
-  };
-
-  // Define navigation items based on login state
-  const navItems = isLoggedIn
-    ? [
-        { to: '/loggedIn', label: 'Home' },
-        { to: '/createDish', label: 'Create Dish' }
-      ]
-    : [
-        { to: '/', label: 'Home' },
-        { to: '/view-recipes', label: 'View Recipes' },
-        { to: '/login', label: 'Login' },
-      ];
+  // Define navigation items
+  const navItems = [
+    { to: '/', label: 'Home' },
+    { to: '/view-recipes', label: 'View Recipes' },
+    { to: '/createDish', label: 'Create Dish' },
+  ];
 
   return (
     <header className="bg-pink-500 text-white p-5 flex flex-col md:flex-row justify-between items-center relative z-50">
@@ -47,11 +31,6 @@ function Nav() {
             {item.label}
           </Link>
         ))}
-        {isLoggedIn && (
-          <button onClick={handleLogout} className="hover:underline">
-            Logout
-          </button>
-        )}
       </nav>
 
       {/* Mobile Menu */}
@@ -67,11 +46,6 @@ function Nav() {
               {item.label}
             </Link>
           ))}
-          {isLoggedIn && (
-            <button onClick={handleLogout} className="block w-full hover:underline">
-              Logout
-            </button>
-          )}
         </div>
       )}
     </header>

@@ -1,40 +1,48 @@
 // backend/apiRequest.js
-require('dotenv').config();
-const OpenAI = require('openai');
 
-if (!process.env.OPENAI_API_KEY) {
-  throw new Error('Missing OPENAI_API_KEY in .env');
+// Load environment variables from .env in local development
+require('dotenv').config();
+
+const { Configuration, OpenAIApi } = require('openai');
+
+// Pull your OpenAI key from the environment
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+if (!OPENAI_API_KEY) {
+  throw new Error('Missing OPENAI_API_KEY environment variable');
 }
 
-// Instantiate the OpenAI client (v4 SDK)
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
+// Initialize the OpenAI client
+const configuration = new Configuration({
+  apiKey: OPENAI_API_KEY,
 });
+const openai = new OpenAIApi(configuration);
 
 /**
- * Build and send a “Generate me a _ _ dish” prompt to OpenAI
- *
- * @param {string} diet
- * @param {string} culture
- * @returns {Promise<string>}
+ * generateDish
+ * @param {string} diet - e.g. "vegetarian", "vegan", "halal", "pescatarian"
+ * @param {string} culture - e.g. "chinese", "french", "spanish", etc.
+ * @returns {Promise<string>} - the text response from OpenAI
  */
 async function generateDish(diet, culture) {
-  const prompt =
-    `Generate me a ${diet} ${culture} dish:\n` +
-    `- Dish name\n` +
-    `- Ingredients (with amounts)\n` +
-    `- Step-by-step cooking instructions\n`;
+  // Build the prompt
+  const prompt = `
+Please suggest a creative and delicious ${culture} dish that fits a ${diet} diet.
+List:
+1) The name of the dish
+2) A one-sentence description
+3) 3–5 bullet-pointed ingredients or steps.
+  `.trim();
 
-  const res = await openai.chat.completions.create({
-    model: 'gpt-3.5-turbo',
-    messages: [{ role: 'user', content: prompt }],
-    max_tokens: 400,
-    temperature: 0.7
+  // Call the OpenAI Completion API
+  const response = await openai.createCompletion({
+    model: 'text-davinci-003',
+    prompt,
+    max_tokens: 200,
+    temperature: 0.8,
   });
 
-  // The returned content is in res.choices[0].message.content
-  return res.choices[0].message.content.trim();
+  // Extract and return the text
+  return response.data.choices[0].text.trim();
 }
 
-// Export as an object so you can do: const { generateDish } = require('./apiRequest')
 module.exports = { generateDish };
